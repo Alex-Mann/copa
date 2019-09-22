@@ -1,0 +1,58 @@
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  phoneNumber: String!
+  assets: [Asset] @connection
+}
+
+type Group @model {
+  id: ID!
+  groupName: String!
+  members: [User] @connection
+  categories: [Category] @connection
+}
+
+type Category @model {
+  id: ID!
+  categoryName: String!
+  assets: [Asset] @connection
+  thread: Thread @connection
+}
+
+type Asset @model {
+  id: ID!
+  name: String!
+  price: Float!
+  ownedBy: [User] @connection
+  purchased: Boolean
+  buyIn: [UserBuyin]
+  purchasedDate: String
+  purchasedBy: User
+  purchasedFrom: String
+  settledUp: Boolean
+  url: String
+  category: Category
+  tags: String
+}
+
+type UserBuyin @model {
+  user: User
+  asset: Asset
+  buyIn: Boolean
+}
+
+type Thread @model {
+  id: ID!
+  category: Category @connection
+  messages: [Message] @connection
+}
+
+type Message @model {
+  id: ID!
+  user: User @connection
+  timeSent: String
+  thread: Thread @connection
+}

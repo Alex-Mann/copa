@@ -1,0 +1,76 @@
+type Blog @model {
+  id: ID!
+  name: String!
+  posts: [Post] @connection(name: "BlogPosts")
+}
+type Post @model {
+  id: ID!
+  title: String!
+  blog: Blog @connection(name: "BlogPosts")
+  comments: [Comment] @connection(name: "PostComments")
+}
+type Comment @model {
+  id: ID!
+  content: String
+  post: Post @connection(name: "PostComments")
+}
+
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  phoneNumber: String!
+  assets: [Asset] @connection
+}
+
+type Group @model {
+  id: ID!
+  groupName: String!
+  members: [User] @connection
+  categories: [Category] @connection
+}
+
+type Category @model {
+  id: ID!
+  categoryName: String!
+  assets: [Asset] @connection(name: "CategoryAssets")
+  thread: Thread @connection
+}
+
+type Asset @model {
+  id: ID!
+  name: String!
+  price: Float!
+  thumbnailUrl: String
+  ownedBy: [User] @connection
+  purchased: Boolean
+  buyIn: [UserBuyin]
+  purchasedDate: String
+  purchasedBy: User
+  purchasedFrom: String
+  settledUp: Boolean
+  url: String
+  category: Category @connection(name: "CategoryAssets")
+  tags: String
+}
+
+type UserBuyin @model {
+  user: User
+  asset: Asset
+  buyIn: Boolean
+}
+
+type Thread @model {
+  id: ID!
+  category: Category @connection
+  messages: [Message] @connection
+}
+
+type Message @model {
+  id: ID!
+  user: User @connection
+  timeSent: String
+  thread: Thread @connection
+}

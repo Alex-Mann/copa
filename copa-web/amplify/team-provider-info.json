@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "copa-web-dev-20190921224830-authRole",
+            "UnauthRoleArn": "arn:aws:iam::744309760634:role/copa-web-dev-20190921224830-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::744309760634:role/copa-web-dev-20190921224830-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "copa-web-dev-20190921224830-deployment",
+            "UnauthRoleName": "copa-web-dev-20190921224830-unauthRole",
+            "StackName": "copa-web-dev-20190921224830",
+            "StackId": "arn:aws:cloudformation:us-east-1:744309760634:stack/copa-web-dev-20190921224830/76002a40-dce3-11e9-9b45-0a5651437e88"
+        },
+        "categories": {
+            "auth": {
+                "copaweb9ae011f6": {}
+            }
+        }
+    }
+}
